@@ -17,14 +17,20 @@ Sobel operator estimates the gradient magnitude and direction at each pixel in a
 ### Sobel Operator
 
 The Sobel operator is obtained by doing some manipulations to the x and y derivatives, that we looked at in the previous post. To obtain the Sobel derivative along the x-direction, we perform an outer product between a 1D Gaussian filter and the x derivative. The Sobel y filter is obtained by performing an outer product between the y derivative and a 1D Gaussian filter. The following figures illustrate the process:
+<br />
+<p align="center">
+<img src="images/sobel_x.png" width="500">
+</p>
+<br /> 
+<p align="center">
+<img src="images/sobel_y.png" width="500">
+</p>
 
-![](sobel_x.png)
-![](sobel_y.png)
 
 The Gaussian filter is used for reducing noise that results in blurred images. Thus, the Sobel operator computes the image gradient with less noise. 
 
 ### Sobel Algorithm
-The Sobel algorithm can be summarized in five steps:
+The Sobel algorithm can be summarized in four steps:
 
 1. Converting the image into grayscale
 2. Convolving the gray image with Sobel-x filter
@@ -40,7 +46,7 @@ The Canny algorithm can be summarized in five steps:
 
 1. Blurring the grayscale image 
 
-    To blur the image, a Gaussian filter is implemented in the code. 
+    To blur the image, a Gaussian filter is implemented. 
 2. Finding the gradient magnitude and direction
 
     To calculate the image gradient, the Sobel operator is implemented, basically, steps 2-4 of the Sobel algorithm discussed above.  
@@ -52,24 +58,37 @@ The Canny algorithm can be summarized in five steps:
 
     * if the angle of the current pixel is around 0°, the magnitude of the current pixel is preserved only if it is greater than the magnitude of the pixels to the west and east. Otherwise, it is set to zero. 
 
-    ![](case1.png)
+   
+    <p align="center">
+    <img src="images/case1.png" width="700">
+    </p>
    
 
     * if the angle of the current pixel is around 45°, the magnitude of the current pixel is preserved only if it is greater than the magnitude of the off-diagonal neighboring pixels. Otherwise, it is set to zero.
 
-    ![](case2.png)
+   
+    <p align="center">
+    <img src="images/case2.png" width="700">
+    </p>
+   
 
     * if the angle of the current pixel is around 90°, the magnitude of the current pixel is preserved only if it is greater than the magnitude of the neighboring pixels in the north and south direction. Otherwise, it is set to zero. 
 
-    ![](case3.png) 
+    
+    <p align="center">
+    <img src="images/case3.png" width="700">
+    </p>
+   
 
     * if the angle of the current pixel is around 135°, the magnitude of the current pixel is preserved only if it is greater than the magnitude of the diagonal neighboring pixels. Otherwise, it is set to zero. 
 
-    ![](case4.png)
+    
+    <p align="center">
+    <img src="images/case4.png" width="700">
+    </p>
+   
 
-    One important thing to keep in mind is that we use the direction of the gradient at the pixel that is being processed in the "if" statement to update the magnitude of the gradient at the same pixel. Also, note that the x-coordinate axis of a digital image runs from left to right and the y-coordinate axis runs from top to bottom. Let's see how the four cases look visually for any pixel with a gradient magnitude G[i,j]:
-
-    The edge is perpendicular to the direction of intensity change 
+    One important thing to keep in mind is that we use the direction of the gradient at the pixel that is being processed in the "if" statement to update the magnitude of the gradient at the same pixel. The edge is perpendicular to the direction of intensity change. Also, note that the x-coordinate axis of a digital image runs from left to right and the y-coordinate axis runs from top to bottom. 
 
 4. Double Threshold 
 
@@ -77,7 +96,7 @@ The Canny algorithm can be summarized in five steps:
 
     * the pixels that have a gradient magnitude higher than the high threshold are chosen to be strong edges and they appear in the final result. 
     * the pixels that have a gradient magnitude less than the low threshold are discarded, i.e their values are set to zero.
-    * if the strength of the magnitude falls in between the two thresholds, it is considered to be a weak edge. Weak edges are either taken to the strong edges group or to the non-edge group. To decide on that, another algorithm is used, which is discussed in the final step. 
+    * if the strength of the magnitude falls in between the two thresholds, it is considered to be a weak edge. Weak edges are either taken to the strong edges               group or to the non-edge group. To decide on that, another algorithm is used, which is discussed in the final step. 
 
 5. Edge tracking by hysteresis 
 
@@ -91,14 +110,20 @@ The main advantages of the Sobel operator are that it is simple and more time-ef
 
 The following images summarize the differences between Sobel and Canny edge detection applications.
 
-![](dragon.jpeg)
-![](dragon_gray.png)
-![](sobel_CV2.png)
-![](canny_OpenCV.png)
+<p align="center">  
+<img src="images/dragon_gray.png" width="300"> <img src="images/sobel_CV2.png" width="300"> <img src="images/canny_OpenCV.png" width="300"> 
+ 
+</p>
+To the left side is the original image already converted into grayscale. The middle image is the result of applying the Sobel operator on the grayscale image. The image on the right side is the result of the Canny algorithm. 
+
+<br />
+<br />
+<br />
 
 Resources: 
 <br />
 Paper: Comparison of Edge Detection Techniques 
+<br />
 Wikipedia     
 
 

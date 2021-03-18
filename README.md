@@ -19,7 +19,7 @@ Sobel operator estimates the gradient magnitude and direction at each pixel in a
 The Sobel operator is obtained by doing some manipulations to the x and y derivatives, that we looked at in the previous post. To obtain the Sobel derivative along the x-direction, we perform an outer product between a 1D Gaussian filter and the x derivative. The Sobel y filter is obtained by performing an outer product between the y derivative and a 1D Gaussian filter. The following figures illustrate the process:
 <br />
 <p align="center">
-<img src="images/sobel_x.png" width="500">
+<img src="images/sobel_x.png" width="40">
 </p>
 <br /> 
 <p align="center">
@@ -111,7 +111,7 @@ The main advantages of the Sobel operator are that it is simple and more time-ef
 The following images summarize the differences between Sobel and Canny edge detection applications.
 
 <p align="center">  
-<img src="images/dragon_gray.png" width="300"> <img src="images/sobel_CV2.png" width="300"> <img src="images/canny_OpenCV.png" width="300"> 
+<img src="images/dragon_gray.png" width="250"> <img src="images/sobel_CV2.png" width="250"> <img src="images/canny_OpenCV.png" width="250"> 
  
 </p>
 To the left side is the original image already converted into grayscale. The middle image is the result of applying the Sobel operator on the grayscale image. The image on the right side is the result of the Canny algorithm. 

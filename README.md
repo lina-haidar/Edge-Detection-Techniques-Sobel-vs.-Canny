@@ -19,7 +19,7 @@ Sobel operator estimates the gradient magnitude and direction at each pixel in a
 The Sobel operator is obtained by doing some manipulations to the x and y derivatives, that we looked at in the previous post. To obtain the Sobel derivative along the x-direction, we perform an outer product between a 1D Gaussian filter and the x derivative. The Sobel y filter is obtained by performing an outer product between the y derivative and a 1D Gaussian filter. The following figures illustrate the process:
 <br />
 <p align="center">
-<img src="images/sobel_x.png" width="40">
+<img src="images/sobel_x.png" width="500">
 </p>
 <br /> 
 <p align="center">
